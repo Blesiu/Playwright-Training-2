@@ -15,4 +15,11 @@ test("File upload", async ({ page }) => {
   // 8. Verify the file is properly uploaded
 
   await page.goto("https://qaplayground.dev/apps/upload/");
+  const selectImageButton = page.locator(".btn-green-outline");
+  const fileChooserEvent = page.waitForEvent("filechooser");
+  const fileName = "random-pig.jpg";
+  const filePath = "src/data/" + fileName;
+  await selectImageButton.click();
+  const fileChooser = await fileChooserEvent;
+  await fileChooser.setFiles(filePath);
 });

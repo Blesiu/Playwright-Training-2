@@ -13,7 +13,7 @@ const users: User[] = [
   { name: "Edward", age: 22, isActive: false },
 ];
 test("Filter users to get active users", () => {
-  const activeUsers: User[] = []; // your code goes here
+  const activeUsers: User[] = users.filter((user) => user.isActive === true);
 
   expect(activeUsers).toEqual([
     { name: "Alice", age: 28, isActive: true },
@@ -23,7 +23,7 @@ test("Filter users to get active users", () => {
 });
 
 test("Filter users to get adult users", () => {
-  const adultUsers: User[] = []; // your code goes here
+  const adultUsers: User[] = users.filter((user) => user.age >= 18);
 
   expect(adultUsers).toEqual([
     { name: "Alice", age: 28, isActive: true },
@@ -34,7 +34,9 @@ test("Filter users to get adult users", () => {
 
 test("Filter users whose name starts with A", () => {
   //String.startsWith() method
-  const adultUsers: User[] = []; // your code goes here
+  const adultUsers: User[] = users.filter(
+    (user) => user.name.charAt(0) === "A",
+  );
 
   expect(adultUsers).toEqual([{ name: "Alice", age: 28, isActive: true }]);
 });
